@@ -15,7 +15,12 @@ connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err);
 }) 
 
+app.use(express.static(__dirname + '/client/build/'));
 app.use(bodyParser.json());
+
+app.get('/', (req,res) => {
+    res.sendFile(__dirname + '/client/build/index.html')
+  })
 app.get('/', (req,res) => {
   res.send('Hello world!')
 })
