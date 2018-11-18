@@ -5,7 +5,18 @@ import { Link } from "react-router-dom";
 
 class UserPage extends Component {
   state = {
-    user: {},
+    user: {
+      myRecipes: [
+        // {
+        //   name: "",
+        //   img: "",
+        //   mainIngredient: "",
+        //   ingredients: [],
+        //   preparation: "",
+        //   timeNeeded: ""
+        // }
+      ]
+    },
     newRecipe: {
       name: "",
       img: "",
@@ -21,22 +32,20 @@ class UserPage extends Component {
   }
 
   consoled = () => {
-      console.log(this.state)
-  }
+    console.log(this.state);
+  };
 
   getUser = () => {
     const userId = this.props.match.params.userId;
     axios.get(`/api/users/${userId}`).then(res => {
       this.setState({ user: res.data });
-      console.log(this.state)
+      console.log(this.state);
     });
   };
 
-  deleteUser = (userId) => {
-      axios.delete(`/api/users/${userId}`).then(() => {
-
-      })
-  }
+  deleteUser = userId => {
+    axios.delete(`/api/users/${userId}`).then(() => {});
+  };
 
   handleChange = event => {
     const brandNewRecipe = { ...this.state.newRecipe };
@@ -45,23 +54,25 @@ class UserPage extends Component {
   };
 
   handleSubmit = event => {
-      console.log(this.state)
-      const userId = this.props.match.params.userId;
+    console.log(this.state);
+    const userId = this.props.match.params.userId;
     event.preventDefault();
-    axios.post(`/api/users/${userId}/recipes`, this.state.newRecipe).then(res => {
-      this.props.history.push(`/users/${userId}/recipes/${res.data._id}`);
-    });
+    axios
+      .post(`/api/users/${userId}/recipes`, this.state.newRecipe)
+      .then(res => {
+        this.props.history.push(`/users/${userId}/recipes/${res.data._id}`);
+      });
   };
 
   render() {
     return (
       <div>
-        {/* <h1>{this.state.user.name}'s Recipes</h1>
+        <h1>{this.state.user.name}'s Recipes</h1>
         {this.state.user.myRecipes.map(recipe => (
           <div key={recipe._id}>
             <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
           </div>
-        ))} */}
+        ))}
 
         <h3>Create new Recipe</h3>
         <form onSubmit={this.handleSubmit}>
