@@ -5,66 +5,122 @@ import { Link } from "react-router-dom";
 
 class UserPage extends Component {
   state = {
-      user:{},
-    recipes: []
-  };
-
-  handleChange = (event) => {
-    const brandNewRecipe = {...this.state.newRecipe}
-    brandNewRecipe[event.target.name] = event.target.value
-    this.setState({newRecipe: brandNewRecipe})
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    axios.post('/api/users/userId/recipes', this.state.newUser).then(res => {
-      this.props.history.push(`/users/${res.data._id}`)
-    })
-  }
-
-  getAllRecipes = () => {
-    const userId = this.props.match.params.userId;
-    axios.get(`/api/users/${userId}`).then(res => {
-      this.setState({ user: res.data, recipes: res.data.recipes });
-    });
+    user: {},
+    newRecipe: {
+      name: "",
+      img: "",
+      mainIngredient: "",
+      ingredients: [],
+      preparation: "",
+      timeNeeded: ""
+    }
   };
 
   componentDidMount() {
-    this.getAllRecipes()
+    this.getUser();
   }
 
+  consoled = () => {
+      console.log(this.state)
+  }
+
+  getUser = () => {
+    const userId = this.props.match.params.userId;
+    axios.get(`/api/users/${userId}`).then(res => {
+      this.setState({ user: res.data });
+      console.log(this.state)
+    });
+  };
+
+  deleteUser = (userId) => {
+      axios.delete(`/api/users/${userId}`).then(() => {
+
+      })
+  }
+
+  handleChange = event => {
+    const brandNewRecipe = { ...this.state.newRecipe };
+    brandNewRecipe[event.target.name] = event.target.value;
+    this.setState({ newRecipe: brandNewRecipe });
+  };
+
+  handleSubmit = event => {
+      console.log(this.state)
+      const userId = this.props.match.params.userId;
+    event.preventDefault();
+    axios.post(`/api/users/${userId}/recipes`, this.state.newRecipe).then(res => {
+      this.props.history.push(`/users/${userId}/recipes/${res.data._id}`);
+    });
+  };
 
   render() {
     return (
       <div>
-        <h1>Hello from UserPage</h1>
-        <div>
-          <h3>My Recipes:</h3>
-          {this.state.recipes.map(recipe => (
-            <div key={recipe._id}>
-              <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
-            </div>
-          ))}
-        </div>
-        <div>
-        <h3>Create New Recipe</h3>
+        {/* <h1>{this.state.user.name}'s Recipes</h1>
+        {this.state.user.myRecipes.map(recipe => (
+          <div key={recipe._id}>
+            <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
+          </div>
+        ))} */}
+
+        <h3>Create new Recipe</h3>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="username">User Name: </label>
-            <input onChange={this.handleChange} value={this.state.newUser.username} type="text" name="username"/>
+            <label htmlFor="image">Image URL: </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.image}
+              type="text"
+              name="image"
+            />
           </div>
           <div>
-            <label htmlFor="password">Password: </label>
-            <input onChange={this.handleChange} value={this.state.newUser.password} type="password" name="password"/>
+            <label htmlFor="preparation">Preparation: </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.preparation}
+              type="text"
+              name="preparation"
+            />
           </div>
           <div>
             <label htmlFor="name">Name: </label>
-            <input onChange={this.handleChange} value={this.state.newUser.name} type="text" name="name"/>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.name}
+              type="text"
+              name="name"
+            />
           </div>
-          <button type="submit">Create User</button>
+          <div>
+            <label htmlFor="timeNeeded">Total Time Needed: </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.timeNeeded}
+              type="text"
+              name="timeNeeded"
+            />
+          </div>
+          <div>
+            <label htmlFor="mainIngredient">Main Ingredient: </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.mainIngredient}
+              type="text"
+              name="mainIngredient"
+            />
+          </div>
+          <div>
+            <label htmlFor="ingredients">Ingredients List: </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.ingredients}
+              type="array"
+              name="ingredients"
+            />
+          </div>
+          <button type="submit">Create Recipe</button>
         </form>
-        </div>
-        
       </div>
     );
   }
