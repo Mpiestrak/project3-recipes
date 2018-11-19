@@ -43,11 +43,11 @@ class UserPage extends Component {
   handleSubmit = event => {
     console.log(this.state);
     const userId = this.props.match.params.userId;
-    event.preventDefault();
+    // event.preventDefault();
     axios
       .post(`/api/users/${userId}/recipes`, this.state.newRecipe)
       .then(res => {
-        this.props.history.push(`/users/${userId}/recipes/${res.data._id}`);
+        this.props.history.push(`/users/${userId}`);
       });
   };
 
@@ -82,6 +82,15 @@ class UserPage extends Component {
             </select>
           </div>
           <div>
+            <label htmlFor="ingredients">Ingredients: </label>
+            <input
+              onChange={this.handleChange}
+              value={this.state.newRecipe.ingredients}
+              type="list"
+              name="ingredients"
+            />
+          </div>
+          {/* <div>
             <label htmlFor="image">Image URL: </label>
             <input
               onChange={this.handleChange}
@@ -89,7 +98,7 @@ class UserPage extends Component {
               type="href"
               name="img"
             />
-          </div>
+          </div> */}
           <div>
             <label htmlFor="timeNeeded">Total Time Needed: </label>
             <input
