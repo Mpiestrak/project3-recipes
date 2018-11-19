@@ -3,6 +3,14 @@ import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const DeleteButton = styled.button`
+background: red;
+color: white;
+border: black 2px solid;
+border-radius: 5px;
+font-size: 5vw;
+`
+
 class UserPage extends Component {
   state = {
     user: {
@@ -46,10 +54,15 @@ class UserPage extends Component {
     // event.preventDefault();
     axios
       .post(`/api/users/${userId}/recipes`, this.state.newRecipe)
-      .then(res => {
-        this.props.history.push(`/users/${userId}`);
-      });
   };
+
+  delete = () => {
+    const userId = this.props.match.params.userId;
+    axios.delete(`/api/users/${userId}`).then(() => {
+        this.props.history.push(`/users`)
+        this.props.history.push(`/login`);
+    })
+  }
 
   render() {
     return (
@@ -57,7 +70,7 @@ class UserPage extends Component {
         <h1>{this.state.user.name}'s Recipes</h1>
         {this.state.user.myRecipes.map(recipe => (
           <div key={recipe._id}>
-            <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
+            <Link to={`/users/${this.props.match.params.userId}/recipes/${recipe._id}`}>{recipe.name}</Link>
           </div>
         ))}
 
@@ -119,6 +132,9 @@ class UserPage extends Component {
           </div>
           <button type="submit">Create Recipe</button>
         </form>
+        <div>
+        <DeleteButton onClick={() => this.delete()}>Delete User</DeleteButton>
+        </div>
       </div>
     );
   }
