@@ -12,9 +12,9 @@ router.delete('/api/users/:userId', userController.delete)
 
 router.get('/api/users/:userId/recipes', recipeController.index)
 router.post('/api/users/:userId/recipes', recipeController.create)
-router.get('/api/users/:userId/recipes/:recipeId', recipeController.show)
-router.patch('/api/users/:userId/recipes/:recipeId', recipeController.update)
-router.delete('/api/users/:userId/recipes/:recipeId', recipeController.delete)
+router.get('/api/recipes/:recipeId', recipeController.show)
+router.patch('/api/recipes/:recipeId', recipeController.update)
+router.delete('/api/recipes/:recipeId', recipeController.delete)
 
 
 

@@ -29,7 +29,7 @@ class NavBar extends Component {
   render() {
     return (
       <NavBarStyles>
-        <Link to="/login">My Recipes</Link>
+        <Link to="/login">Login</Link>
         <div className="right">
           <Link to="/">Home</Link>
         </div>

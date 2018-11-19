@@ -30,8 +30,7 @@ state = {
 
   getRecipe = () => {
     const recipeId = this.props.match.params.recipeId;
-    const userId = this.props.match.params.userId
-    axios.get(`/api/users/${userId}/recipes/${recipeId}`).then(res => {
+    axios.get(`/api/recipes/${recipeId}`).then(res => {
       this.setState({ recipe: res.data });
       console.log(this.state);
     });
