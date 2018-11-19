@@ -17,7 +17,7 @@ class App extends Component {
             <Route exact path="/users/:userId" component={UserPage} />
             <Route
               exact
-              path="/users/:userId/recipes/:recipeId"
+              path="/recipes/:recipeId"
               component={RecipePage}
             />
             <Route path="/" component={HomePage} />
