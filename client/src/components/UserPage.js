@@ -22,10 +22,6 @@ class UserPage extends Component {
     this.getUser();
   }
 
-  consoled = () => {
-    console.log(this.state);
-  };
-
   getUser = () => {
     const userId = this.props.match.params.userId;
     axios.get(`/api/users/${userId}`).then(res => {
