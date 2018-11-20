@@ -59,7 +59,6 @@ class UserPage extends Component {
   handleSubmit = event => {
     console.log(this.state);
     const userId = this.props.match.params.userId;
-    // event.preventDefault();
     axios.post(`/api/users/${userId}/recipes`, this.state.newRecipe);
   };
 
@@ -96,6 +95,7 @@ class UserPage extends Component {
             <div>
               <label htmlFor="mainIngredient">Main Ingredient: </label>
               <select onChange={this.handleChange} value={this.state.newRecipe.mainIngredient} name="mainIngredient">
+                <option value=""></option>
                 <option value="Chicken">Chicken</option>
                 <option value="Beef">Beef</option>
                 <option value="Seafood">Seafood</option>
