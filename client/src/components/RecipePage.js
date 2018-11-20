@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import RecipeUpdate from "./RecipeUpdate";
 
 const DeleteButton = styled.button`
 background: red;
@@ -66,8 +67,12 @@ state = {
         <div>
             <h3>Directions:</h3> {this.state.recipe.preparation}
         </div>
-        <DeleteButton onClick={() => this.delete()}>Delete Recipe</DeleteButton>
-        
+        <div>
+            <DeleteButton onClick={() => this.delete()}>Delete Recipe</DeleteButton>
+        </div>
+        <div>
+            <RecipeUpdate {...this.props}/>
+        </div>
       </div>
     );
   }
