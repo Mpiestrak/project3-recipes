@@ -66,11 +66,12 @@ class RecipeUpdate extends Component {
             </div>
             <div>
               <label htmlFor="mainIngredient">Main Ingredient: </label>
-              <select name="mainIngredient">
-                <option value="chicken">Chicken</option>
-                <option value="beef">Beef</option>
-                <option value="seafood">Seafood</option>
-                <option value="pork">Pork</option>
+              <select onChange={this.handleChange} value={this.state.recipe.mainIngredient} name="mainIngredient">
+                <option value=""></option>
+                <option value="Chicken">Chicken</option>
+                <option value="Beef">Beef</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Pork">Pork</option>
               </select>
             </div>
             <div>
