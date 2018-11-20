@@ -12,7 +12,7 @@ const SubmitButton = styled.button`
 
 class UserUpdate extends Component {
   state = {
-    users: [],
+    users: {},
     updatedUser: {
       username: "",
       password: "",
@@ -27,17 +27,17 @@ class UserUpdate extends Component {
     this.setState({ updatedUser: updatedNewUser });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    axios.post("/api/users", this.state.updatedUser).then(res => {
-      this.props.history.push(`/users/${res.data._id}`);
-    });
-  };
+//   handleSubmit = event => {
+//     event.preventDefault();
+//     axios.post("/api/users", this.state.updatedUser).then(res => {
+//       this.props.history.push(`/users/${res.data._id}`);
+//     });
+//   };
 
-  update = () => {
-    const userId = this.props.match.params.userId;
-    axios.patch(`/api/users/${userId}`).then(() => {
-      this.props.history.push(`/users/${userId}`);
+  update = (event) => {
+    const userId = this.props.match.params.recipeId;
+    axios.patch(`/api/users/${userId}`, this.state.updatedUser).then(res => {
+      this.props.history.push(`/users/${res.data._id}`);
     });
   };
 
@@ -45,7 +45,7 @@ class UserUpdate extends Component {
     return (
       <div>
         <h3>Update User Information</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div>
             <label htmlFor="username">User Name: </label>
             <input
