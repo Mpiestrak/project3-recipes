@@ -1,4 +1,14 @@
 .body {
-background-image: url(${img});
-background-attachment: fixed;
+background-color: rgba(245, 245, 245, 0.76);
+margin: 0vw 10vw;
+padding: 0vw 10px;
+border-radius: 10px;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-radius: 10px;
 }

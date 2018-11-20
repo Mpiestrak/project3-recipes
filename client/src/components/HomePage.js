@@ -17,13 +17,8 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5vw;
-  border: 3px black solid;
-`;
-const Body = styled.div`
-  background-image: url(${img});
-  background-attachment: fixed;
-  background-size: "cover";
+  margin: 0vw;
+  border-radius: 10px;
 `;
 
 class HomePage extends Component {
@@ -41,10 +36,10 @@ class HomePage extends Component {
 
   render() {
     return (
-      <Body>
-        <div>
-          <Title>Recipe Box</Title>
-          <h3>Recipe's from the box:</h3>
+      <div>
+        <Title>Recipe Box</Title>
+        <div className='body'>
+          <h3 className='subtitle'>Recipe's from the box:</h3>
           <Content>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni
@@ -54,7 +49,7 @@ class HomePage extends Component {
             </p>
           </Content>
         </div>
-      </Body>
+      </div>
     );
   }
 }
