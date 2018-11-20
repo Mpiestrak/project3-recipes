@@ -42,7 +42,6 @@ class RecipeUpdate extends Component {
   };
 
   update = () => {
-    console.log("hit once");
     const recipeId = this.props.match.params.recipeId;
     const updatedRecipe = this.state.recipe;
     axios.patch(`/api/recipes/${recipeId}`, updatedRecipe).then(res => {
@@ -66,8 +65,12 @@ class RecipeUpdate extends Component {
             </div>
             <div>
               <label htmlFor="mainIngredient">Main Ingredient: </label>
-              <select onChange={this.handleChange} value={this.state.recipe.mainIngredient} name="mainIngredient">
-                <option value=""></option>
+              <select
+                onChange={this.handleChange}
+                value={this.state.recipe.mainIngredient}
+                name="mainIngredient"
+              >
+                <option value="" />
                 <option value="Chicken">Chicken</option>
                 <option value="Beef">Beef</option>
                 <option value="Seafood">Seafood</option>

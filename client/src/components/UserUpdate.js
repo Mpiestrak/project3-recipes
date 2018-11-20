@@ -36,7 +36,6 @@ class UserUpdate extends Component {
   };
 
   update = () => {
-      console.log('hit once')
     const userId = this.props.match.params.userId;
     const updatedUser = this.state.user
     axios.patch(`/api/users/${userId}`, updatedUser).then(res => {

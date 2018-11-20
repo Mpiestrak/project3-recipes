@@ -5,6 +5,8 @@ import RecipePage from "./components/RecipePage";
 import UserPage from "./components/UserPage";
 import NavBar from "./components/NavBar"
 import LogInPage from "./components/LogInPage"
+import './css/MainPage.css'
+
 
 class App extends Component {
   render() {

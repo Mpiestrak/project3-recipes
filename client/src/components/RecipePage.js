@@ -40,9 +40,7 @@ state = {
   delete = () => {
     const recipeId = this.props.match.params.recipeId;
     axios.delete(`/api/recipes/${recipeId}`).then(() => {
-        this.props.history.push(`/recipes`)
-        this.props.history.go(-2)
-        // this.props.history.push(`/login`);
+        this.props.history.push(`/login`); 
     })
   }
 
