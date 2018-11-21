@@ -7,7 +7,7 @@ const SubmitButton = styled.button`
   background: blue;
   color: white;
   border-radius: 5px;
-  font-size: 3vw;
+  font-size: 15px;
 `;
 
 class UserUpdate extends Component {

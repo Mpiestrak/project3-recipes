@@ -1,0 +1,17 @@
+
+
+.recipebody {
+    background-color: hsla(0, 0%, 27%, 0.8);
+        margin: 0vw 10vw;
+        padding: 5px 10px;
+        border-radius: 10px;
+}
+
+.directions{
+    /* margin: 0px 35vw 0px 0px; */
+}
+
+.recipeContainer {
+    display: flex;
+    justify-content: space-evenly;
+}

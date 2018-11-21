@@ -1,24 +1,24 @@
 
 
-.loginbody {
-        background-color: hsla(0, 0%, 27%, 0.8);
+.userbody {
+    background-color: hsla(0, 0%, 27%, 0.8);
         margin: 0vw 10vw;
         padding: 5px 10px;
         border-radius: 10px;
+}
+
+.recipesContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.usersTitle {
+    display: flex;
+    justify-content: center;
 }
 
 .labels {
     font-size: 15px;
     font-weight: 700;
     
-}
-
-.usersContainer {
-    display: flex;
-    justify-content: space-between;
-}
-
-.loginTitle {
-    display: flex;
-    justify-content: center;
 }

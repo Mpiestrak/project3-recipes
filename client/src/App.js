@@ -25,6 +25,19 @@ const Global = createGlobalStyle`
     background-color: whitesmoke;
     border: black 1px solid;
   }
+
+  a {
+    text-decoration: none;
+}
+
+.linkstyle {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        font-weight: 800;
+        font-style: italic;
+}
+
 `;
 
 class App extends Component {

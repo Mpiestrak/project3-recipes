@@ -35,11 +35,11 @@ const recipeController = {
         var userId = req.params.userId
         User.findById(userId)
             .then((user) => {
-                console.log(user)
+                // console.log(user)
                 Recipe.create(req.body)
                     .then((newRecipe) => {
-                        console.log(newRecipe)
-                        console.log(user.recipes)
+                        // console.log(newRecipe)
+                        // console.log(user.recipes)
                         user.myRecipes.push(newRecipe)
                         user.save()
                         res.send(newRecipe)

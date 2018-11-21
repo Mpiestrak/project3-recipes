@@ -48,7 +48,7 @@ class LogInPage extends Component {
             <div>
               {this.state.users.map(user => (
                 <div key={user._id}>
-                  <Link className="usernames" to={`/users/${user._id}`}>
+                  <Link className="linkstyle" to={`/users/${user._id}`}>
                     {user.name}
                   </Link>
                 </div>
@@ -57,7 +57,7 @@ class LogInPage extends Component {
           </div>
 
           <div className="signup">
-            <h2>Sign-Up</h2>
+            <h2>Sign-Up:</h2>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label className="labels" htmlFor="username">

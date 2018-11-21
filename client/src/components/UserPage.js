@@ -3,20 +3,21 @@ import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import UserUpdate from "./UserUpdate";
+import "../css/UserPage.css";
 
 const DeleteButton = styled.button`
   background: red;
   color: white;
   border: black 2px solid;
   border-radius: 5px;
-  font-size: 3vw;
+  font-size: 15px;
 `;
 
 const SubmitButton = styled.button`
   background: blue;
   color: white;
   border-radius: 5px;
-  font-size: 3vw;
+  font-size: 15px;
 `;
 
 class UserPage extends Component {
@@ -73,79 +74,93 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.user.name}'s Recipes</h1>
-        {this.state.user.myRecipes.map(recipe => (
-          <div key={recipe._id}>
-            <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
-          </div>
-        ))}
+        <div className="userbody">
+          <h1 className="usersTitle">{this.state.user.name}'s Recipes:</h1>
+          {this.state.user.myRecipes.map(recipe => (
+            <div key={recipe._id}>
+              <Link className="linkstyle" to={`/recipes/${recipe._id}`}>
+                {recipe.name}
+              </Link>
+            </div>
+          ))}
 
-        <h3>Create new Recipe</h3>
-        <div>
-          <form onSubmit={this.handleSubmit}>
+          <div className='recipesContainer'>
             <div>
-              <label htmlFor="name">Name: </label>
-              <input
-                onChange={this.handleChange}
-                value={this.state.newRecipe.name}
-                type="text"
-                name="name"
-              />
+              <UserUpdate {...this.props} />
             </div>
-            <div>
-              <label htmlFor="mainIngredient">Main Ingredient: </label>
-              <select onChange={this.handleChange} value={this.state.newRecipe.mainIngredient} name="mainIngredient">
-                <option value=""></option>
-                <option value="Chicken">Chicken</option>
-                <option value="Beef">Beef</option>
-                <option value="Seafood">Seafood</option>
-                <option value="Pork">Pork</option>
-              </select>
+            <div className>
+              <h3>Create new Recipe</h3>
+              <div>
+                <form onSubmit={this.handleSubmit}>
+                  <div>
+                    <label className='labels' htmlFor="name">Name: </label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.newRecipe.name}
+                      type="text"
+                      name="name"
+                    />
+                  </div>
+                  <div>
+                    <label className='labels' htmlFor="mainIngredient">Main Ingredient: </label>
+                    <select
+                      onChange={this.handleChange}
+                      value={this.state.newRecipe.mainIngredient}
+                      name="mainIngredient"
+                    >
+                      <option value="" />
+                      <option value="Chicken">Chicken</option>
+                      <option value="Beef">Beef</option>
+                      <option value="Seafood">Seafood</option>
+                      <option value="Pork">Pork</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className='labels' htmlFor="ingredients">Ingredients: </label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.newRecipe.ingredients}
+                      type="list"
+                      name="ingredients"
+                    />
+                  </div>
+                  {/* <div>
+          <label className='labels' htmlFor="image">Image URL: </label>
+          <input
+          onChange={this.handleChange}
+          value={this.state.newRecipe.img}
+          type="href"
+          name="img"
+          />
+          </div> */}
+                  <div>
+                    <label className='labels' htmlFor="timeNeeded">Total Time Needed: </label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.newRecipe.timeNeeded}
+                      type="text"
+                      name="timeNeeded"
+                    />
+                  </div>
+                  <div>
+                    <label className='labels' htmlFor="preparation">Preparation: </label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.newRecipe.preparation}
+                      type="text"
+                      name="preparation"
+                    />
+                  </div>
+                  <SubmitButton type="submit">Create Recipe</SubmitButton>
+                </form>
+              </div>
             </div>
-            <div>
-              <label htmlFor="ingredients">Ingredients: </label>
-              <input
-                onChange={this.handleChange}
-                value={this.state.newRecipe.ingredients}
-                type="list"
-                name="ingredients"
-              />
-            </div>
-            {/* <div>
-        <label htmlFor="image">Image URL: </label>
-        <input
-        onChange={this.handleChange}
-        value={this.state.newRecipe.img}
-        type="href"
-        name="img"
-        />
-        </div> */}
-            <div>
-              <label htmlFor="timeNeeded">Total Time Needed: </label>
-              <input
-                onChange={this.handleChange}
-                value={this.state.newRecipe.timeNeeded}
-                type="text"
-                name="timeNeeded"
-              />
-            </div>
-            <div>
-              <label htmlFor="preparation">Preparation: </label>
-              <input
-                onChange={this.handleChange}
-                value={this.state.newRecipe.preparation}
-                type="text"
-                name="preparation"
-              />
-            </div>
-            <SubmitButton type="submit">Create Recipe</SubmitButton>
-          </form>
-        </div>
-        <div>
-          <UserUpdate {...this.props}/>
-        </div>
-        <div>
-          <DeleteButton onClick={() => this.delete()}>Delete User</DeleteButton>
+          </div>
+          <div>
+            <DeleteButton onClick={() => this.delete()}>
+              Delete User
+            </DeleteButton>
+          </div>
         </div>
       </div>
     );
