@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import "../css/LoginPage.css";
+
+const SubmitButton = styled.button`
+  background: blue;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+`;
 
 class LogInPage extends Component {
   state = {
@@ -92,7 +100,7 @@ class LogInPage extends Component {
                   />
                 </div>
               </div>
-              <button type="submit">Create User</button>
+              <SubmitButton type="submit">Create User</SubmitButton>
             </form>
           </div>
         </div>
