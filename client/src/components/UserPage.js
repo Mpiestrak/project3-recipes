@@ -84,7 +84,7 @@ class UserPage extends Component {
             </div>
           ))}
 
-          <div className='recipesContainer'>
+          <div className="recipesContainer">
             <div>
               <UserUpdate {...this.props} />
             </div>
@@ -93,7 +93,9 @@ class UserPage extends Component {
               <div>
                 <form onSubmit={this.handleSubmit}>
                   <div>
-                    <label className='labels' htmlFor="name">Name: </label>
+                    <label className="labels" htmlFor="name">
+                      Name:{" "}
+                    </label>
                     <input
                       onChange={this.handleChange}
                       value={this.state.newRecipe.name}
@@ -102,7 +104,9 @@ class UserPage extends Component {
                     />
                   </div>
                   <div>
-                    <label className='labels' htmlFor="mainIngredient">Main Ingredient: </label>
+                    <label className="labels" htmlFor="mainIngredient">
+                      Main Ingredient:{" "}
+                    </label>
                     <select
                       onChange={this.handleChange}
                       value={this.state.newRecipe.mainIngredient}
@@ -116,7 +120,9 @@ class UserPage extends Component {
                     </select>
                   </div>
                   <div>
-                    <label className='labels' htmlFor="ingredients">Ingredients: </label>
+                    <label className="labels" htmlFor="ingredients">
+                      Ingredients:{" "}
+                    </label>
                     <input
                       onChange={this.handleChange}
                       value={this.state.newRecipe.ingredients}
@@ -124,26 +130,32 @@ class UserPage extends Component {
                       name="ingredients"
                     />
                   </div>
-                  {/* <div>
-          <label className='labels' htmlFor="image">Image URL: </label>
-          <input
-          onChange={this.handleChange}
-          value={this.state.newRecipe.img}
-          type="href"
-          name="img"
-          />
-          </div> */}
                   <div>
-                    <label className='labels' htmlFor="timeNeeded">Total Time Needed: </label>
+                    <label className="labels" htmlFor="image">
+                      Image URL:{" "}
+                    </label>
+                    <input
+                      onChange={this.handleChange}
+                      value={this.state.newRecipe.img}
+                      type="href"
+                      name="img"
+                    />
+                  </div>
+                  <div>
+                    <label className="labels" htmlFor="timeNeeded">
+                      Total Time Needed:{" "}
+                    </label>
                     <input
                       onChange={this.handleChange}
                       value={this.state.newRecipe.timeNeeded}
-                      type="text"
+                      type="number"
                       name="timeNeeded"
                     />
                   </div>
                   <div>
-                    <label className='labels' htmlFor="preparation">Preparation: </label>
+                    <label className="labels" htmlFor="preparation">
+                      Preparation:{" "}
+                    </label>
                     <input
                       onChange={this.handleChange}
                       value={this.state.newRecipe.preparation}
